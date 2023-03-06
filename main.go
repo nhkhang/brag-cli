@@ -1,11 +1,13 @@
-package bragcli
+package main
 
 import (
-	// "cmd/bragcli"
-	"fmt"
+	"brag-cli/cmd/bragcli"
 )
 
 func main() {
-	fmt.Println("main")
-	// bragcli.Execute()
+	// if err := config.LoadUserConfig(); err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	bragcli.Execute()
 }
