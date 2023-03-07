@@ -31,6 +31,21 @@ var addCmd = &cobra.Command{
 	},
 }
 
+var getCmd = &cobra.Command{
+	Use: "get",
+	// Args: cobra.MinimumNArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		// message, _ := cmd.Flags().GetString("m")
+		category, err := category.GetCategory("default")
+		if err != nil {
+			fmt.Printf("Get category failed: %v", err)
+			return
+		}
+
+		fmt.Println("Category: ", category)
+	},
+}
+
 func Execute() {
 	rootCmd.AddCommand(addCmd)
 

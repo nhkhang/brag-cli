@@ -46,3 +46,12 @@ func AddBrag(brag string, category string) error {
 
 	return nil
 }
+
+func GetCategory(category string) (*model.Category, error) {
+	if err := LoadCategory(category); err != nil {
+		fmt.Println("vl")
+		return nil, err
+	}
+
+	return CurCategory, nil
+}

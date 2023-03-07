@@ -1,10 +1,1 @@
-{
-  "id": "121nianf2830nhinka",
-  "name": "default",
-  "createdAt": 0,
-  "updatedAt": 0,
-  "docs": [
-    { "id": "wwRTSrp_mX3bUqsie6_GpHkZH70=", "brag": "first brag", "createdAt": 1678121137, "updatedAt": 1678121137 },
-    { "id": "lmYdEjx05aGSyQh_97hGLeEJKjk=", "brag": "first brag", "createdAt": 1678121585, "updatedAt": 1678121585 }
-  ]
-}
+{"id":"121nianf2830nhinka","name":"default","createdAt":0,"updatedAt":0,"docs":[{"id":"wwRTSrp_mX3bUqsie6_GpHkZH70=","brag":"first brag","createdAt":1678121137,"updatedAt":1678121137},{"id":"lmYdEjx05aGSyQh_97hGLeEJKjk=","brag":"first brag","createdAt":1678121585,"updatedAt":1678121585},{"id":"lmYdEjx05aGSyQh_97hGLeEJKjk=","brag":"first brag","createdAt":1678121852,"updatedAt":1678121852}]}
