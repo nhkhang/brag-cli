@@ -10,15 +10,15 @@ type Category struct {
 	Name      string `json:"name" csv:"name"`
 	CreatedAt int64  `json:"createdAt" csv:"createdAt"`
 	UpdatedAt int64  `json:"updatedAt" csv:"updatedAt"`
-	Docs      []Doc  `json:"docs" csv:"docs"`
+	Brags     []Brag `json:"brags" csv:"brags"`
 }
 
 func NewCategory(name string) *Category {
 	return &Category{
-		ID:        common.GenID(name + time.Now().String()),
+		ID:        common.GenerateRandomID(6),
 		Name:      name,
 		CreatedAt: time.Now().Unix(),
 		UpdatedAt: time.Now().Unix(),
-		Docs:      make([]Doc, 0),
+		Brags:     make([]Brag, 0),
 	}
 }

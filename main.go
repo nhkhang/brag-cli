@@ -5,9 +5,5 @@ import (
 )
 
 func main() {
-	// if err := config.LoadUserConfig(); err != nil {
-	// 	log.Fatal(err)
-	// }
-
 	bragcli.Execute()
 }

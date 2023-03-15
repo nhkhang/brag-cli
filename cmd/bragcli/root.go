@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"brag-cli/common"
 	"brag-cli/pkg/category"
 
 	"github.com/spf13/cobra"
@@ -19,21 +20,31 @@ var rootCmd = &cobra.Command{
 }
 
 var addCmd = &cobra.Command{
-	Use: "add",
-	// Args: cobra.MinimumNArgs(1),
+	Use: common.AddCommand,
 	Run: func(cmd *cobra.Command, args []string) {
-		message, _ := cmd.Flags().GetString("m")
+		mess, err := cmd.Flags().GetString(string(common.MessFlag))
+		if err != nil || mess == "" {
+			return
+		}
 
-		fmt.Println("Add brag: " + message)
-		if err := category.AddBrag(message, "default"); err != nil {
-			fmt.Printf("Add brag failed: %v", err)
+		cat, err := cmd.Flags().GetString(string(common.CategoryFlag))
+		if err != nil {
+			return
+		}
+
+		if cat == "" {
+			cat = common.DefaultCategory
+		}
+
+		if err := category.AddBrag(mess, cat); err != nil {
+			fmt.Printf("Add brag failed: %v \n", err)
+			return
 		}
 	},
 }
 
-var getCmd = &cobra.Command{
-	Use: "get",
-	// Args: cobra.MinimumNArgs(1),
+var viewCmd = &cobra.Command{
+	Use: common.ViewCommand,
 	Run: func(cmd *cobra.Command, args []string) {
 		// message, _ := cmd.Flags().GetString("m")
 		category, err := category.GetCategory("default")
@@ -48,8 +59,10 @@ var getCmd = &cobra.Command{
 
 func Execute() {
 	rootCmd.AddCommand(addCmd)
+	rootCmd.AddCommand(viewCmd)
 
-	addCmd.PersistentFlags().String("m", "", "String message")
+	rootCmd.PersistentFlags().StringVarP(nil, string(common.MessFlag), string(common.MessShortFlag), "", "Input brag message")
+	rootCmd.PersistentFlags().StringVarP(nil, string(common.CategoryFlag), string(common.CategoryShortFlag), "", "Input type of brag")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Errorf("Error execute root cmd: %v", err)
