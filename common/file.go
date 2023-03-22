@@ -7,8 +7,15 @@ import (
 	"github.com/goccy/go-json"
 )
 
+const DATA_PATH = "./data/"
+
+func GetDataFilePath(name string) string {
+	return fmt.Sprintf("%s%s.json", DATA_PATH, name)
+}
+
 func LoadData(fileName string, data interface{}) error {
-	f, err := os.Open(fmt.Sprintf("./data/%s.json", fileName))
+	filePath := fmt.Sprintf("%s%s.json", DATA_PATH, fileName)
+	f, err := os.Open(filePath)
 	if err != nil {
 		return err
 	}
@@ -24,7 +31,8 @@ func LoadData(fileName string, data interface{}) error {
 }
 
 func SaveData(fileName string, data interface{}) error {
-	file, err := os.Create(fmt.Sprintf("./data/%s.json", fileName))
+	filePath := GetDataFilePath(fileName)
+	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, os.ModePerm)
 	if err != nil {
 		return err
 	}

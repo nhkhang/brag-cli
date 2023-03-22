@@ -2,7 +2,7 @@ package bragcli
 
 import (
 	"brag-cli/common"
-	"brag-cli/pkg/category"
+	"brag-cli/service"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -25,7 +25,7 @@ var addCmd = &cobra.Command{
 			cat = common.DefaultCategory
 		}
 
-		if err := category.AddBrag(mess, cat); err != nil {
+		if err := service.AddBrag(mess, cat); err != nil {
 			fmt.Printf("Add brag failed: %v \n", err)
 			return
 		}

@@ -1,4 +1,4 @@
-package category
+package service
 
 import (
 	"brag-cli/common"
@@ -29,12 +29,13 @@ func SaveCategory(category *model.Category) error {
 }
 
 func AddBrag(brag string, category string) error {
+	fmt.Println("add brag", category)
 	dCategory, err := LoadCategory(category)
 	if err != nil {
 		return err
 	}
 
-	fmt.Println("cur category", dCategory)
+	fmt.Println("Category: ", dCategory)
 
 	dCategory.Brags = append(dCategory.Brags, *model.NewBrag(brag))
 

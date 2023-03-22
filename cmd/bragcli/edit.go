@@ -2,7 +2,7 @@ package bragcli
 
 import (
 	"brag-cli/common"
-	"brag-cli/pkg/category"
+	"brag-cli/service"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -25,7 +25,7 @@ var editCmd = &cobra.Command{
 			cat = common.DefaultCategory
 		}
 
-		category, err := category.GetCategory(cat)
+		category, err := service.GetCategory(cat)
 		if err != nil {
 			fmt.Printf("Get category failed: %v", err)
 			return

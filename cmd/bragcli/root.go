@@ -19,12 +19,17 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
+	var mFlag string
+	var cFlag string
+
+	// Add commands
 	rootCmd.AddCommand(addCmd)
 	rootCmd.AddCommand(viewCmd)
 	rootCmd.AddCommand(editCmd)
 
-	rootCmd.PersistentFlags().StringVarP(nil, string(common.MessFlag), string(common.MessShortFlag), "", "Input brag message")
-	rootCmd.PersistentFlags().StringVarP(nil, string(common.CategoryFlag), string(common.CategoryShortFlag), "", "Input type of brag")
+	// Add flags
+	rootCmd.PersistentFlags().StringVarP(&mFlag, string(common.MessFlag), string(common.MessShortFlag), "", "Input brag message")
+	rootCmd.PersistentFlags().StringVarP(&cFlag, string(common.CategoryFlag), string(common.CategoryShortFlag), "", "Input type of brag")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Errorf("Error execute root cmd: %v", err)

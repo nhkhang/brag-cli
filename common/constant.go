@@ -4,7 +4,7 @@ const (
 	DefaultCategory = "general"
 )
 
-var ListBragType = []string{
+var SystemListCategories = []string{
 	"general",
 	"task",
 	"support",

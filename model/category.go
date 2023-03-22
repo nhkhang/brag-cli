@@ -6,19 +6,19 @@ import (
 )
 
 type Category struct {
-	ID        string `json:"id" csv:"id"`
-	Name      string `json:"name" csv:"name"`
-	CreatedAt int64  `json:"createdAt" csv:"createdAt"`
-	UpdatedAt int64  `json:"updatedAt" csv:"updatedAt"`
-	Brags     []Brag `json:"brags" csv:"brags"`
+	ID        string    `json:"id" csv:"id"`
+	Name      string    `json:"name" csv:"name"`
+	CreatedAt time.Time `json:"createdAt" csv:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt" csv:"updatedAt"`
+	Brags     []Brag    `json:"brags" csv:"brags"`
 }
 
 func NewCategory(name string) *Category {
 	return &Category{
 		ID:        common.GenerateRandomID(6),
 		Name:      name,
-		CreatedAt: time.Now().Unix(),
-		UpdatedAt: time.Now().Unix(),
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
 		Brags:     make([]Brag, 0),
 	}
 }
